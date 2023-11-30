@@ -1,5 +1,5 @@
 <body style="background-color: black;">
-  <canvas id="canvas" width="500" height="500"></canvas>
+  <canvas id="canvas" width="500" height="500" style="background-color: white;"></canvas>
 </body>
 
 <script>
@@ -10,6 +10,14 @@
     ctx.moveTo((x1 * 250) + 250, (y1 * 250) + 250);
     ctx.lineTo((x2 * 250) + 250, (y2 * 250) + 250);
     ctx.stroke();
+  }
+
+  var convert3DCoordinateTo2D = function(x, y, z) {
+    
+  }
+
+  var rotate3D = function(x, y, z, pitch, yaw, roll) {
+    
   }
 
   drawLine(-100, -100, 100, 100);
