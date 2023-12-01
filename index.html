@@ -6,9 +6,9 @@
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
 
-  var roll = 0;
-  var pitch = 0;
-  var yaw = 0;
+  var rol = 0;
+  var pitc = 0;
+  var ya = 0;
 
   var rotatedX = 0;
   var rotatedY = 0;
@@ -17,10 +17,10 @@
   var threetotwoX = 0;
   var threetotwoY = 0;
 
-  var lineX1 = 0;
-  var lineY1 = 0;
-  var lineX2 = 0;
-  var lineY2 = 0;
+  var lineXone = 0;
+  var lineYone = 0;
+  var lineXtwo = 0;
+  var lineYtwo = 0;
 
   var mult = 0;
   
@@ -32,17 +32,17 @@
 
   var drawLine3D = function(x1, y1, z1, x2, y2, z2) {
     convert3DCoordinateTo2D(x1, y1, z1);
-    lineX1 = threetotwoX;
-    lineY1 = threetotwoY;
+    lineXone = threetotwoX;
+    lineYone = threetotwoY;
     convert3DCoordinateTo2D(x2, y2, z2);
-    lineX2 = threetotwoX;
-    lineY2 = threetotwoY;
+    lineXtwo = threetotwoX;
+    lineYtwo = threetotwoY;
 
-    drawLine(x1, y1, x2, y2);
+    drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
-    rotate3D(x, y, z, roll, pitch, yaw);
+    rotate3D(x, y, z, rol, pitc, yaw);
     mult = 5 / ((rotatedZ + 2) * Math.tan(1.177875))
     threetotwoX = rotatedX * mult
     threetotwoY = rotatedY * mult
