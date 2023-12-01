@@ -16,6 +16,13 @@
 
   var threetotwoX = 0;
   var threetotwoY = 0;
+
+  var lineX1 = 0;
+  var lineY1 = 0;
+  var lineX2 = 0;
+  var lineY2 = 0;
+
+  var mult = 0;
   
   var drawLine = function(x1, y1, x2, y2) {
     ctx.moveTo((x1 * 250) + 250, (y1 * 250) + 250);
@@ -23,14 +30,29 @@
     ctx.stroke();
   }
 
+  var drawLine3D = function(x1, y1, z1, x2, y2, z2) {
+    convert3DCoordinateTo2D(x1, y1, z1);
+    lineX1 = threetotwoX;
+    lineY1 = threetotwoY;
+    convert3DCoordinateTo2D(x2, y2, z2);
+    lineX2 = threetotwoX;
+    lineY2 = threetotwoY;
+
+    drawLine(lineX1, lineY1, lineX2, lineY2);
+  }
+
   var convert3DCoordinateTo2D = function(x, y, z) {
-    
+    rotate3D(x, y, z, roll, pitch, yaw);
+    mult = 5 / ((rotatedZ + 2) * Math.tan(1.177875))
+    threetotwoX = rotatedX * mult
+    threetotwoY = rotatedY * mult
   }
 
   var rotate3D = function(x, y, z, roll, pitch, yaw) {
-    rotatedX = (Math.cos(yaw) * (Math.cos(pitch) * x)) + ((((() * ()) * ()) - ()) + (() + ()))
+    rotatedX = (Math.cos(yaw) * (Math.cos(pitch) * x)) + (((Math.cos(yaw) * (Math.sin(pitch) * Math.sin(roll))) - (Math.sin(yaw) * (Math.cos(roll) * y))) + ((Math.cos(yaw) * (Math.sin(pitch) * Math.cos(roll))) + (Math.sin(yaw) * (Math.sin(roll) * z))));
+    rotatedY = (Math.sin(yaw) * (Math.cos(pitch) * x)) + (((Math.sin(yaw) * (Math.sin(pitch) * Math.sin(roll))) + (Math.cos(yaw) * (Math.cos(roll) * y))) + ((Math.sin(yaw) * (Math.sin(pitch) * Math.cos(roll))) - (Math.cos(yaw) * (Math.sin(roll) * z))));
+    rotatedZ = (((0 - Math.sin(pitch)) * x) + (Math.cos(pitch) * (Math.sin(roll) * y))) + (Math.cos(pitch) * (Math.cos(roll) * z));
   }
 
-  drawLine(-100, -100, 100, 100);
-  drawLine(100, -100, -100, 100);
+  drawLine3D(-50, -50, -50, 50, 50, 50);
 </script>
