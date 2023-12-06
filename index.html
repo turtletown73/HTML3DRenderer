@@ -23,6 +23,13 @@
   var lineYtwo = 0;
 
   var mult = 0;
+
+  var coordinates = [
+    [-100, -100, -100, 100, -100, -100],
+    [100, -100, -100, 100, -100, 100],
+    [100, -100, 100, -100, -100, 100],
+    [-100, -100, 100, -100, -100, -100],
+  ];
   
   var drawLine = function(x1, y1, x2, y2) {
     console.log(x1, y1, x2, y2)
@@ -55,6 +62,8 @@
     rotatedZ = (((0 - Math.sin(pitch)) * x) + (Math.cos(pitch) * (Math.sin(roll) * y))) + (Math.cos(pitch) * (Math.cos(roll) * z));
   }
 
-  drawLine3D(-100, -100, -100, 100, 100, 100);
+  for (var i = 0;i < coordinates.length;i++) {
+    drawLine3D(coordinates[i]);
+  }
   drawLine(-50, 0, 50, 0);
 </script>
