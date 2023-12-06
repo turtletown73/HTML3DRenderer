@@ -38,16 +38,14 @@
     lineXtwo = threetotwoX;
     lineYtwo = threetotwoY;
 
-    alert([lineXone, lineYone, lineXtwo, lineYtwo])
-
     drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
     rotate3D(x, y, z, rol, pitc, ya);
-    mult = 100 / ((rotatedZ + 2) * Math.tan(1.177875))
-    threetotwoX = rotatedX * mult
-    threetotwoY = rotatedY * mult
+    mult = 100 / ((rotatedZ + 2) * Math.tan(1.177875));
+    threetotwoX = rotatedX * mult;
+    threetotwoY = rotatedY * mult;
   }
 
   var rotate3D = function(x, y, z, roll, pitch, yaw) {
@@ -56,6 +54,6 @@
     rotatedZ = (((0 - Math.sin(pitch)) * x) + (Math.cos(pitch) * (Math.sin(roll) * y))) + (Math.cos(pitch) * (Math.cos(roll) * z));
   }
 
-  drawLine3D(-100, -100, -100, 100, 100, 100)
-  drawLine(-50, 0, 50, 0)
+  drawLine3D(-100, -100, -100, 100, 100, 100);
+  drawLine(-50, 0, 50, 0);
 </script>
