@@ -25,6 +25,7 @@
   var mult = 0;
   
   var drawLine = function(x1, y1, x2, y2) {
+    console.log(x1, y1, x2, y2)
     ctx.moveTo((x1 * 250) + 250, (y1 * -250) - 250);
     ctx.lineTo((x2 * 250) + 250, (y2 * -250) - 250);
     ctx.stroke();
