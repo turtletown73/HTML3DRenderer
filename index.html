@@ -21,7 +21,11 @@
   var lineYone = 0;
   var lineXtwo = 0;
   var lineYtwo = 0;
-  var keyDown = 0;
+  
+  var leftKey = 0;
+  var rightKey = 0;
+  var upKey = 0;
+  var downKey = 0;
 
   var mult = 0;
 
@@ -78,23 +82,52 @@
     }
   }
 
-  document.addEventListener("keydown", function(e) {
-    clear();
-    if (e.keyCode == 38) {
+  var draw = function() {
+    if (upKey == 1) {
       rol++;
     }
-    if (e.keyCode == 40) {
+    if (downKey == 1) {
       rol--;
     }
-    if (e.keyCode == 39) {
+    if (rightKey == 1) {
       ya++;
     }
-    if (e.keyCode == 37) {
+    if (leftKey == 1) {
       ya--;
     }
+    clear();
     drawShape(coordinates);
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.keyCode == 38) {
+      upKey = 1;
+    }
+    if (e.keyCode == 40) {
+      downKey = 1;
+    }
+    if (e.keyCode == 39) {
+      rightKey = 1;
+    }
+    if (e.keyCode == 37) {
+      leftKey = 1;
+    }
+  }, false);
+
+  document.addEventListener("keyup", function(e) {
+    if (e.keyCode == 38) {
+      upKey = 0;
+    }
+    if (e.keyCode == 40) {
+      downKey = 0;
+    }
+    if (e.keyCode == 39) {
+      rightKey = 0;
+    }
+    if (e.keyCode == 37) {
+      leftKey = 0;
+    }
   }, false);
   
-  clear();
-  drawShape(coordinates);
+  setInterval(draw);
 </script>
