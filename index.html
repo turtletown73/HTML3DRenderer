@@ -78,7 +78,7 @@
     }
   }
 
-  document.onkeypress = function(e) {
+  document.addEventListener("onkeypress", function(e) {
     clear();
     if (e.keyCode == 38) {
       ya = ya + 15;
@@ -93,8 +93,8 @@
       rol = rol - 15;
     }
     drawShape(coordinates);
-  }
-
+  });
+  
   clear();
   drawShape(coordinates);
 </script>
