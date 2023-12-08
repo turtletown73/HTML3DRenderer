@@ -129,10 +129,11 @@
       if (coordinates == pyramid) {
         coordinates = cube;
       }
-      if (coordinates == cube) {
-        coordinates = pyramid;
+      else {
+        if (coordinates == cube) {
+          coordinates = pyramid;
+        }
       }
-      alert(coordinates);
     }
   }, false);
 
