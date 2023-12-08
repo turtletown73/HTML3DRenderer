@@ -39,9 +39,7 @@
   var drawLine = function(x1, y1, x2, y2) {
     console.log(x1, y1, x2, y2)
     ctx.moveTo((x1 * 2.5) + 250, (y1 * -2.5) + 250);
-    ctx.beginPath();
     ctx.lineTo((x2 * 2.5) + 250, (y2 * -2.5) + 250);
-    ctx.closePath();
     ctx.stroke();
   }
 
@@ -58,7 +56,7 @@
 
   var convert3DCoordinateTo2D = function(x, y, z) {
     rotate3D(x, y, z, rol, pitc, ya);
-    mult = 100 / ((z) * 2.41269679);
+    mult = 100 / ((z + 2) * 2.41269679);
     threetotwoX = x * mult;
     threetotwoY = y * mult;
   }
