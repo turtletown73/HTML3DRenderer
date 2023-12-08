@@ -1,5 +1,5 @@
 <body style="background-color: black;">
-  <canvas id="canvas" width="500" height="500" style="background-color: white; color: green;"></canvas>
+  <canvas id="canvas" style="background-color: white; color: green;padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;height: 100vh;"></canvas>
 </body>
 
 <script>
@@ -43,8 +43,8 @@
   var drawLine = function(x1, y1, x2, y2) {
     console.log(x1, y1, x2, y2);
     ctx.beginPath();
-    ctx.moveTo((x1 * 2.5) + 250, (y1 * -2.5) + 250);
-    ctx.lineTo((x2 * 2.5) + 250, (y2 * -2.5) + 250);
+    ctx.moveTo((x1 * (canvas.height / 200) ) + (canvas.height / 2), (y1 * (canvas.height / -200)) + (canvas.height / 2));
+    ctx.lineTo((x2 * (canvas.height / 200)) + (canvas.height / 2), (y2 * (canvas.height / -200)) + (canvas.height / 2));
     ctx.stroke();
   }
 
