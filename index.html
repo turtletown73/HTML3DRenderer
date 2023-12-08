@@ -81,16 +81,16 @@
   document.addEventListener("keydown", function(e) {
     clear();
     if (e.keyCode == 38) {
-      ya = ya + 15;
+      ya++;
     }
     if (e.keyCode == 40) {
-      ya = ya - 15;
+      ya--;
     }
     if (e.keyCode == 39) {
-      rol = rol + 15;
+      rol++;
     }
     if (e.keyCode == 37) {
-      rol = rol - 15;
+      rol--;
     }
     drawShape(coordinates);
   }, false);
