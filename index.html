@@ -21,6 +21,7 @@
   var lineYone = 0;
   var lineXtwo = 0;
   var lineYtwo = 0;
+  var keyDown = 0;
 
   var mult = 0;
 
@@ -76,21 +77,29 @@
     }
   }
 
-  document.onkeypress = function (e) {
-    clear();
-    if (e.keyCode == 38) {
-      ya++
+  document.onkeydown = function (e) {
+    keyDown = 1;
+    while (keyDown == 1) {
+      clear();
+      if (e.keyCode == 38) {
+        ya++;
+      }
+      if (e.keyCode == 40) {
+        ya--;
+      }
+      if (e.keyCode == 39) {
+        rol++;
+      }
+      if (e.keyCode == 37) {
+        rol--;
+      }
+      drawShape(coordinates);
     }
-    if (e.keyCode == 40) {
-      ya--
-    }
-    if (e.keyCode == 39) {
-      rol++
-    }
-    if (e.keyCode == 37) {
-      rol--
-    }
-    drawShape(coordinates);
+    
+  }
+
+  document.onkeyup = function (e) {
+    keyDown = 0;
   }
 
   clear();
