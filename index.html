@@ -78,6 +78,23 @@
     }
   }
 
+  document.onkeypress = function(e) {
+    clear();
+    if (e.keyCode == 38) {
+      ya = ya + 15;
+    }
+    if (e.keyCode == 40) {
+      ya = ya - 15;
+    }
+    if (e.keyCode == 39) {
+      rol = rol + 15;
+    }
+    if (e.keyCode == 37) {
+      rol = rol - 15;
+    }
+    drawShape(coordinates);
+  }
+
   clear();
   drawShape(coordinates);
 </script>
