@@ -56,7 +56,7 @@
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
-    rotate3D(x, y, z, rol / 360, pitc / 360, ya / 360);
+    rotate3D(x, y, z, rol / 100, pitc / 100, ya / 100);
     mult = 100 / ((rotatedZ + 200) * 2.41269679);
     threetotwoX = rotatedX * mult;
     threetotwoY = rotatedY * mult;
