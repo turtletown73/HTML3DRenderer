@@ -1,4 +1,4 @@
-<body style="background-color: black;">
+ <body style="background-color: black;">
   <canvas id="canvas" width="500" height="500" style="background-color: white; color: green;padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;height: 500px;width: 500px;"></canvas>
 </body>
 
@@ -97,7 +97,9 @@
     lineXtwo = threetotwoX;
     lineYtwo = threetotwoY;
 
-    drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
+    if (lineXone <= 100 && lineXone => -100 && lineYone <= 100 && lineYone >= -100 lineXtwo <= 100 && lineXtwo => -100 && lineYtwo <= 100 && lineYtwo >= -100) {
+      drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
+    }
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
