@@ -76,6 +76,9 @@
     [-100, -100, 100, 0, 100, 0]
   ];
 
+  var smiley = [];
+  smiley = smiley.concat(getCubeEdgesFromVertices(-100, -100, 0, 100, -75, 0)).concat(getCubeEdgesFromVertices(-100, -75, 0, -75, -50, 0)).concat(getCubeEdgesFromVertices(100, -75, 0, 75, -50, 0));
+
   var coordinates = pyramid;
   
   var drawLine = function(x1, y1, x2, y2) {
