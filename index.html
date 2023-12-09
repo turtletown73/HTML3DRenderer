@@ -97,7 +97,30 @@
     lineXtwo = threetotwoX;
     lineYtwo = threetotwoY;
 
-    if (!(lineXone > 100 || lineXone < -100 || lineYone > 100 || lineYone < -100 || lineXtwo > 100 || lineXtwo < -100 || lineYtwo > 100 || lineYtwo < -100))
+    if (lineXone > 100) {
+     lineXone = 100;
+    }
+    if (lineXone < -100) {
+     lineXone = -100;
+    }
+    if (lineYone > 100) {
+     lineYone = 100;
+    }
+    if (lineYone < -100) {
+     lineYone = -100;
+    }
+    if (lineXtwo > 100) {
+     lineXtwo = 100;
+    }
+    if (lineXtwo < -100) {
+     lineXtwo = -100;
+    }
+    if (lineYtwo > 100) {
+     lineYtwo = 100;
+    }
+    if (lineYtwo < -100) {
+     lineYtwo = -100;
+    }
     drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
   }
 
