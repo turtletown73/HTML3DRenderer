@@ -156,7 +156,12 @@
       }
       else {
         if (coordinates == cube) {
-          coordinates = pyramid;
+          coordinates = rectangle;
+        }
+        else {
+          if (coordinates == rectangle) {
+            coordinates = pyramid;
+          }
         }
       }
     }
