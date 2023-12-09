@@ -29,7 +29,32 @@
 
   var mult = 0;
 
-  var cube = [
+  var getCubeEdgesFromVertices = function(x1, y1, z1, x2, y2, z2) {
+    var array = [];
+    var vertices = [
+      [x1, y1, z1],
+      [x2, y1, z1],
+      [x2, y2, z1],
+      [x1, y2, z1],
+      [x1, y1, z2],
+      [x2, y1, z2],
+      [x2, y2, z2],
+      [x1, y2, z2]
+    ];
+    for (let i = 0;i < vertices.length;i++) {
+      var secondArray = [];
+      for (let o = 0;o < vertices.length;o++) {
+        secondArray.push([vertices[i][0], vertices[i][1], vertices[i][2], vertices[o][0], vertices[o][1], vertices[o][2]]);
+      }
+      for (let o = 0;o < secondArray.length;o++) {
+        array.push(secondArray[o]);
+      }
+    }
+
+    return array;
+  }
+
+  var cubeTwo = [
     [-100, -100, -100, 100, -100, -100],
     [100, -100, -100, 100, -100, 100],
     [100, -100, 100, -100, -100, 100],
@@ -60,6 +85,8 @@
     [100, 100, -100, -100, 100, -100],
     [-100, 100, -100, -100, -100, -100],
   ]
+
+  var cube = getCubeEdgesFromVertices(-100, -100, -100, 100, 100, 100);
   
   var pyramid = [
     [-100, -100, -100, 100, -100, -100],
