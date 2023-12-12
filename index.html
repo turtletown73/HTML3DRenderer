@@ -103,28 +103,28 @@
     if (lineXone > 100 || lineYone > 100) {
      while (lineXone > 100 || lineYone > 100) {
       lineXone--;
-      lineYone = lineYone - (rise / run);
+      lineYone = lineYone - Math.abs(rise / run);
      }
     }
 
     if (lineXone < -100 || lineYone < -100) {
      while (lineXone < -100 || lineYone < -100) {
       lineXone++;
-      lineYone = lineYone + (rise / run);
+      lineYone = lineYone + Math.abs(rise / run);
      }
     }
 
     if (lineXtwo > 100 || lineYtwo > 100) {
      while (lineXtwo > 100 || lineYtwo > 100) {
       lineXtwo--;
-      lineYtwo = lineYtwo - (rise / run);
+      lineYtwo = lineYtwo - Math.abs(rise / run);
      }
     }
 
     if (lineXtwo < -100 || lineYtwo < -100) {
      while (lineXtwo < -100 || lineYtwo < -100) {
       lineXtwo++;
-      lineYtwo = lineYtwo + (rise / run);
+      lineYtwo = lineYtwo + Math.abs(rise / run);
      }
     }
 
