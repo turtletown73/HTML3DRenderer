@@ -3,7 +3,12 @@
 </body>
 
 <script>
-  var canvas = document.getElementById("canvas");
+  var canvasOrig = document.getElementById("canvas");
+ 
+  const offscreen = canvasOrig.transferControlToOffscreen();
+  const worker = new Worker("worker.js");
+  worker.postMessage({ canvas: offscreen }, [offscreen]);
+ 
   var ctx = canvas.getContext("2d");
 
   var rol = 0;
@@ -81,15 +86,15 @@
 
   var coordinates = pyramid;
   
-  var drawLine = function(x1, y1, x2, y2) {
+  var drawLine = function(x1, y1, x2, y2, ctxt, canvas) {
     console.log(x1, y1, x2, y2);
-    ctx.beginPath();
-    ctx.moveTo((x1 * (canvas.height / 200) ) + (canvas.height / 2), (y1 * (canvas.height / -200)) + (canvas.height / 2));
-    ctx.lineTo((x2 * (canvas.height / 200)) + (canvas.height / 2), (y2 * (canvas.height / -200)) + (canvas.height / 2));
-    ctx.stroke();
+    ctxt.beginPath();
+    ctxt.moveTo((x1 * (canvas.height / 200) ) + (canvas.height / 2), (y1 * (canvas.height / -200)) + (canvas.height / 2));
+    ctxt.lineTo((x2 * (canvas.height / 200)) + (canvas.height / 2), (y2 * (canvas.height / -200)) + (canvas.height / 2));
+    ctxt.stroke();
   }
 
-  var drawLine3D = function(x1, y1, z1, x2, y2, z2) {
+  var drawLine3D = function(x1, y1, z1, x2, y2, z2, ctxt, canvas) {
     convert3DCoordinateTo2D(x1, y1, z1);
     lineXone = threetotwoX;
     lineYone = threetotwoY;
@@ -97,7 +102,7 @@
     lineXtwo = threetotwoX;
     lineYtwo = threetotwoY;
 
-    drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
+    drawLine(lineXone, lineYone, lineXtwo, lineYtwo, ctxt, canvas);
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
@@ -113,17 +118,17 @@
     rotatedZ = (((0 - Math.sin(pitch)) * x) + (Math.cos(pitch) * (Math.sin(roll) * y))) + (Math.cos(pitch) * (Math.cos(roll) * z));
   }
 
-  var clear = function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  var clear = function(ctxt, canvas) {
+    ctxt.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  var drawShape = function(points) {
+  var drawShape = function(points, ctxt, canvas) {
     for (var i = 0;i < points.length;i++) {
-      drawLine3D(points[i][0], points[i][1], points[i][2], points[i][3], points[i][4], points[i][5]);
+      drawLine3D(points[i][0], points[i][1], points[i][2], points[i][3], points[i][4], points[i][5], ctxt, canvas);
     }
   }
 
-  var draw = function() {
+  var draw = function(ctxt, canvas) {
     if (upKey == 1) {
       rol++;
     }
@@ -136,8 +141,8 @@
     if (leftKey == 1) {
       ya--;
     }
-    clear();
-    drawShape(coordinates);
+    clear(ctxt, canvas);
+    drawShape(coordinates, ctxt, canvas);
   }
 
   document.addEventListener("keydown", function(e) {
@@ -194,6 +199,11 @@
       leftKey = 0;
     }
   }, false);
-  
-  setInterval(draw, 5);
+
+  onmessage = (event) => {
+    const canvas = event.data.canvas;
+    const ctxt = canvas.getContext("2d");
+    // draw to the offscreen canvas context
+    setInterval(draw(ctxt, canvas), 5);
+  };
 </script>
