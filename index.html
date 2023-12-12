@@ -116,15 +116,15 @@
 
     if (lineXtwo > 100 || lineYtwo > 100) {
      while (lineXtwo > 100 || lineYtwo > 100) {
-      lineXone--;
-      lineYone = lineYone - (rise / run);
+      lineXtwo--;
+      lineYtwo = lineYtwo - (rise / run);
      }
     }
 
     if (lineXtwo < -100 || lineYtwo < -100) {
      while (lineXtwo < -100 || lineYtwo < -100) {
-      lineXone++;
-      lineYone = lineYone + (rise / run);
+      lineXtwo++;
+      lineYtwo = lineYtwo + (rise / run);
      }
     }
 
