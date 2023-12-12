@@ -100,32 +100,8 @@
     var rise = lineYtwo - lineYone;
     var run = lineXtwo - lineXone;
 
-    if (lineXone > 100 || lineYone > 100) {
-     while (lineXone > 100 || lineYone > 100) {
-      lineXone--;
-      lineYone = lineYone - Math.abs(rise / run);
-     }
-    }
-
-    if (lineXone < -100 || lineYone < -100) {
-     while (lineXone < -100 || lineYone < -100) {
-      lineXone++;
-      lineYone = lineYone + Math.abs(rise / run);
-     }
-    }
-
-    if (lineXtwo > 100 || lineYtwo > 100) {
-     while (lineXtwo > 100 || lineYtwo > 100) {
-      lineXtwo--;
-      lineYtwo = lineYtwo - Math.abs(rise / run);
-     }
-    }
-
-    if (lineXtwo < -100 || lineYtwo < -100) {
-     while (lineXtwo < -100 || lineYtwo < -100) {
-      lineXtwo++;
-      lineYtwo = lineYtwo + Math.abs(rise / run);
-     }
+    if (lineXone > 100 || lineXone < -100 || lineYone > 100 || lineYone < -100 || lineXtwo > 100 || lineXtwo < -100 || lineYtwo > 100 || lineYtwo < -100) {
+     
     }
 
     drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
