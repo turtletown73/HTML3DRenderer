@@ -100,11 +100,9 @@
     var rise = lineYtwo - lineYone;
     var run = lineXtwo - lineXone;
 
-    if (lineXone > 100 || lineXone < -100 || lineYone > 100 || lineYone < -100 || lineXtwo > 100 || lineXtwo < -100 || lineYtwo > 100 || lineYtwo < -100) {
-     
+    if (lineXone <= 100 || lineXone >= -100 || lineYone <= 100 || lineYone >= -100 || lineXtwo <= 100 || lineXtwo >= -100 || lineYtwo <= 100 || lineYtwo >= -100) {
+      drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
     }
-
-    drawLine(lineXone, lineYone, lineXtwo, lineYtwo);
   }
 
   var convert3DCoordinateTo2D = function(x, y, z) {
