@@ -83,7 +83,7 @@
   var circleDegree = 0;
   var lastPos = [0, 0, 100];
   for (let i = 0;i <= 360;i++) {
-   var newPos = [lastPos[0] + Math.sin(circleDegree), 0, lastPos[2] + Math.cos(circleDegree)];
+   var newPos = [lastPos[0] + (Math.sin(circleDegree) * 100), 0, lastPos[2] + (Math.cos(circleDegree)] * 100);
    circle.push([lastPos[0], lastPos[1], lastPos[2], newPos[0], newPos[1], newPos[2]]);
    lastPos = newPos;
    circleDegree = circleDegree + 1;
