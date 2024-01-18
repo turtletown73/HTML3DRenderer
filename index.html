@@ -79,6 +79,16 @@
   var smiley = [];
   smiley = smiley.concat(getCubeEdgesFromVertices(-200, -200, -25, 200, -150, 25)).concat(getCubeEdgesFromVertices(-200, -150, -25, -150, -100, 25)).concat(getCubeEdgesFromVertices(200, -150, -25, 150, -100, 25)).concat(getCubeEdgesFromVertices(-200, 100, -25, -150, 200, 25)).concat(getCubeEdgesFromVertices(200, 100, -25, 150, 200, 25));
 
+  var circle = [];
+  var circleDegree = 0;
+  var lastPos = [0, 0, 100];
+  while (circleDegree <= 360) {
+   var newPos = [lastPos[0] + Math.sin(circleDegree), 0, lastPos[2] + Math.cos(circleDegree)];
+   circle = circle.concat([lastPos[0], lastPos[1], lastPos[2], newPos[0], newPos[1], newPos[2]]);
+   lastPos = newPos;
+   circleDegree++;
+  }
+  
   var coordinates = pyramid;
   
   var drawLine = function(x1, y1, x2, y2) {
@@ -172,7 +182,12 @@
           }
           else {
             if (coordinates == smiley) {
+              coordinates = circle;
+            }
+            else {
+             if (coordinates == circle) {
               coordinates = pyramid;
+             }
             }
           }
         }
